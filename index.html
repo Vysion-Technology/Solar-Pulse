@@ -36,8 +36,77 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
 
+    <!-- Swiper link -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+
+    <!-- code for sending the - get a quote  -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init({
+          publicKey: "user_8PpG3ZPT7ffRvVjXahzd4",
+        });
+      })();
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        // Get the contact form element
+        var contactForm = document.getElementById("contact-form");
+
+        // Add event listener for form submission
+        contactForm.addEventListener("submit", function (event) {
+          // Prevent the default form submission behavior
+          event.preventDefault();
+
+          // Validate form fields
+          var fullName = contactForm.elements["fullName"].value;
+          var email = contactForm.elements["email"].value;
+          var phone = contactForm.elements["phone"].value;
+          var service = contactForm.elements["service"].value;
+          var message = contactForm.elements["message"].value;
+
+          // Check if any field is empty
+          if (!fullName || !email || !phone || !service || !message) {
+            alert("Please fill in all fields.");
+            return; // Stop further processing
+          }
+
+          // Validate email format
+          if (!validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return; // Stop further processing
+          }
+
+          // If all checks pass, send the email
+          emailjs
+            .sendForm("service_u129yov", "template_ncfb6ng", this)
+            .then(() => {
+              alert("Email sent successfully!");
+              contactForm.reset(); // Reset the form after successful submission
+            })
+            .catch((error) => {
+              alert("Failed to send email. Please try again later.");
+              console.error("Email sending failed:", error);
+            });
+        });
+
+        // Function to validate email format
+        function validateEmail(email) {
+          var re = /\S+@\S+\.\S+/;
+          return re.test(email);
+        }
+      };
+    </script>
   </head>
 
   <body>
@@ -244,6 +313,7 @@
             data-wow-delay="0.5s"
           >
             <div class="p-lg-5 pe-lg-0">
+              <h6 class="text-primary">About Us</h6>
               <h1 class="mb-4">Decades of Solar Expertise Since 2015</h1>
               <p>
                 Over 10 Years of Dedicated Service in Solar & Renewable Energy
@@ -312,7 +382,7 @@
                   <i class="fa fa-lightbulb fa-3x"></i>
                 </div>
                 <h4 class="mb-3">Kusum Yojana</h4>
-                <p>0.5 - 4 MW GROUND MOUNT SOLAR POWER PLANT</p>
+                <p>Stet stet justo dolor sed duo.</p>
               </div>
             </div>
           </div>
@@ -334,11 +404,9 @@
                 Unlocking Solar Potential: Choose Solar Pulse
               </h1>
               <p class="mb-4 pb-2">
-                Solar Pulse delivers high quality, high performing solar power
-                systems ensuring superior Returns on Investments(ROI). Our brand
-                culture is built on the guiding principle of excellence driven
-                by efficiency and unwavering customer satisfaction and team
-                values to provide best possible solutions to your problems
+                Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
+                Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
+                sed stet lorem sit clita duo justo erat amet
               </p>
               <div class="row g-4">
                 <div class="col-6">
@@ -588,6 +656,188 @@
       </div>
     </div>
     <!-- Projects End -->
+    <!-- Projects Start -->
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div
+          class="text-center mx-auto mb-5 wow fadeInUp"
+          data-wow-delay="0.1s"
+          style="max-width: 600px"
+        >
+          <h6 class="text-primary">Our Projects</h6>
+          <h1 class="mb-4">
+            Visit Our Latest Solar And Renewable Energy Projects
+          </h1>
+        </div>
+        <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="col-12 text-center">
+            <ul class="list-inline mb-5" id="portfolio-flters">
+              <li class="mx-2 active" data-filter="*">All</li>
+              <li class="mx-2" data-filter=".first">Electrical</li>
+              <li class="mx-2" data-filter=".second">Structural</li>
+              <li class="mx-2" data-filter=".third">Consultancy</li>
+              <li class="mx-2" data-filter=".fourth">Civil</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="row g-4 portfolio-container wow fadeInUp"
+          data-wow-delay="0.5s"
+        >
+          <div class="col-lg-4 col-md-6 portfolio-item first">
+            <div class="portfolio-img rounded overflow-hidden">
+              <img class="img-fluid" src="img/img-600x400-6.jpg" alt="" />
+              <div class="portfolio-btn">
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href="img/img-600x400-6.jpg"
+                  data-lightbox="portfolio"
+                  ><i class="fa fa-eye"></i
+                ></a>
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href=""
+                  ><i class="fa fa-link"></i
+                ></a>
+              </div>
+            </div>
+            <div class="pt-3">
+              <p class="text-primary mb-0">Solar Panels</p>
+              <hr class="text-primary w-25 my-2" />
+              <h5 class="lh-base">
+                We Are pioneers of solar & renewable energy industry
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 portfolio-item second">
+            <div class="portfolio-img rounded overflow-hidden">
+              <img class="img-fluid" src="img/img-600x400-5.jpg" alt="" />
+              <div class="portfolio-btn">
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href="img/img-600x400-5.jpg"
+                  data-lightbox="portfolio"
+                  ><i class="fa fa-eye"></i
+                ></a>
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href=""
+                  ><i class="fa fa-link"></i
+                ></a>
+              </div>
+            </div>
+            <div class="pt-3">
+              <p class="text-primary mb-0">Wind Turbines</p>
+              <hr class="text-primary w-25 my-2" />
+              <h5 class="lh-base">
+                We Are pioneers of solar & renewable energy industry
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 portfolio-item third">
+            <div class="portfolio-img rounded overflow-hidden">
+              <img class="img-fluid" src="img/img-600x400-4.jpg" alt="" />
+              <div class="portfolio-btn">
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href="img/img-600x400-4.jpg"
+                  data-lightbox="portfolio"
+                  ><i class="fa fa-eye"></i
+                ></a>
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href=""
+                  ><i class="fa fa-link"></i
+                ></a>
+              </div>
+            </div>
+            <div class="pt-3">
+              <p class="text-primary mb-0">Hydropower Plants</p>
+              <hr class="text-primary w-25 my-2" />
+              <h5 class="lh-base">
+                We Are pioneers of solar & renewable energy industry
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 portfolio-item first">
+            <div class="portfolio-img rounded overflow-hidden">
+              <img class="img-fluid" src="img/img-600x400-3.jpg" alt="" />
+              <div class="portfolio-btn">
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href="img/img-600x400-3.jpg"
+                  data-lightbox="portfolio"
+                  ><i class="fa fa-eye"></i
+                ></a>
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href=""
+                  ><i class="fa fa-link"></i
+                ></a>
+              </div>
+            </div>
+            <div class="pt-3">
+              <p class="text-primary mb-0">Solar Panels</p>
+              <hr class="text-primary w-25 my-2" />
+              <h5 class="lh-base">
+                We Are pioneers of solar & renewable energy industry
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 portfolio-item second">
+            <div class="portfolio-img rounded overflow-hidden">
+              <img class="img-fluid" src="img/img-600x400-2.jpg" alt="" />
+              <div class="portfolio-btn">
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href="img/img-600x400-2.jpg"
+                  data-lightbox="portfolio"
+                  ><i class="fa fa-eye"></i
+                ></a>
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href=""
+                  ><i class="fa fa-link"></i
+                ></a>
+              </div>
+            </div>
+            <div class="pt-3">
+              <p class="text-primary mb-0">Wind Turbines</p>
+              <hr class="text-primary w-25 my-2" />
+              <h5 class="lh-base">
+                We Are pioneers of solar & renewable energy industry
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 portfolio-item third">
+            <div class="portfolio-img rounded overflow-hidden">
+              <img class="img-fluid" src="img/img-600x400-1.jpg" alt="" />
+              <div class="portfolio-btn">
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href="img/img-600x400-1.jpg"
+                  data-lightbox="portfolio"
+                  ><i class="fa fa-eye"></i
+                ></a>
+                <a
+                  class="btn btn-lg-square btn-outline-light rounded-circle mx-1"
+                  href=""
+                  ><i class="fa fa-link"></i
+                ></a>
+              </div>
+            </div>
+            <div class="pt-3">
+              <p class="text-primary mb-0">Hydropower Plants</p>
+              <hr class="text-primary w-25 my-2" />
+              <h5 class="lh-base">
+                We Are pioneers of solar & renewable energy industry
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Projects End -->
 
     <!-- Quote Start -->
     <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
@@ -606,80 +856,146 @@
                 alt=""
               />
             </div>
-          </div>
-          <div
-            class="col-lg-6 quote-text py-5 wow fadeIn"
-            data-wow-delay="0.5s"
-          >
-            <div class="p-lg-5 pe-lg-0">
-              <h1 class="mb-4">Get A Free Quote</h1>
-              <p class="mb-4 pb-2">
-                Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
-                Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
-                sed stet lorem sit clita duo justo erat amet
-              </p>
-              <form>
-                <div class="row g-3">
-                  <div class="col-12 col-sm-6">
-                    <input
-                      type="text"
-                      class="form-control border-0"
-                      placeholder="Your Name"
-                      style="height: 55px"
-                    />
+            <div
+              class="col-lg-6 quote-text py-5 wow fadeIn"
+              data-wow-delay="0.5s"
+            >
+              <div class="p-lg-5 pe-lg-0">
+                <h6 class="text-primary">Free Quote</h6>
+                <h1 class="mb-4">Get A Free Quote</h1>
+                <p class="mb-4 pb-2">
+                  Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
+                  Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
+                  sed stet lorem sit clita duo justo erat amet
+                </p>
+                <form>
+                  <div class="row g-3">
+                    <div class="col-12 col-sm-6">
+                      <input
+                        type="text"
+                        class="form-control border-0"
+                        placeholder="Your Name"
+                        style="height: 55px"
+                      />
+                    </div>
+                    <div class="col-12 col-sm-6">
+                      <input
+                        type="email"
+                        class="form-control border-0"
+                        placeholder="Your Email"
+                        style="height: 55px"
+                      />
+                    </div>
+                    <div class="col-12 col-sm-6">
+                      <input
+                        type="text"
+                        class="form-control border-0"
+                        placeholder="Your Mobile"
+                        style="height: 55px"
+                      />
+                    </div>
+                    <div class="col-12 col-sm-6">
+                      <select class="form-select border-0" style="height: 55px">
+                        <option selected>Select A Service</option>
+                        <option value="1">Service 1</option>
+                        <option value="2">Service 2</option>
+                        <option value="3">Service 3</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <textarea
+                        class="form-control border-0"
+                        placeholder="Special Note"
+                      ></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button
+                        class="btn btn-primary rounded-pill py-3 px-5"
+                        type="submit"
+                      >
+                        Submit
+                      </button>
+                    </div>
                   </div>
-                  <div class="col-12 col-sm-6">
-                    <input
-                      type="email"
-                      class="form-control border-0"
-                      placeholder="Your Email"
-                      style="height: 55px"
-                    />
-                  </div>
-                  <div class="col-12 col-sm-6">
-                    <input
-                      type="text"
-                      class="form-control border-0"
-                      placeholder="Your Mobile"
-                      style="height: 55px"
-                    />
-                  </div>
-                  <div class="col-12 col-sm-6">
-                    <select class="form-select border-0" style="height: 55px">
-                      <option selected>Select A Service</option>
-                      <option value="1">Service 1</option>
-                      <option value="2">Service 2</option>
-                      <option value="3">Service 3</option>
-                    </select>
-                  </div>
-                  <div class="col-12">
-                    <textarea
-                      class="form-control border-0"
-                      placeholder="Special Note"
-                    ></textarea>
-                  </div>
-                  <div class="col-12">
-                    <button
-                      class="btn btn-primary rounded-pill py-3 px-5"
-                      type="submit"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Quote End -->
+      <!-- Quote End -->
 
-    <!-- Testimonial Start -->
-    <div class="container my-5 py-5">
-      <div class="row align-items-center">
-        <div class="col-md-3 mb-2 mb-md-0">
-          <h3 class="p3-6">10+ Top Companies Trust Us</h3>
+      <!-- Testimonial Start -->
+      <div class="container my-5 py-5">
+        <div class="d-flex align-items-center">
+          <div class="col-md-3 mb-2 mb-md-0">
+            <h3 class="p3-6">10+ Top Companies Trust Us</h3>
+          </div>
+          <div class="swiper-container w-100 overflow-hidden">
+            <div class="swiper-wrapper" style="height: 100px">
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/1.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/2.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/3.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/4.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/5.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/6.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/7.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/8.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/9.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/10.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/11.png" alt="vb" />
+              </div>
+              <div
+                class="swiper-slide d-flex justify-content-center align-items-center"
+              >
+                <img src="img/12.png" alt="vb" />
+              </div>
+              <!-- Add more slides as needed -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -811,5 +1127,49 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <!-- Swiper JavaScript -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Your custom JavaScript -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Swiper
+        var swiper = new Swiper(".swiper-container", {
+          speed: 400,
+          spaceBetween: 20,
+          loop: true,
+          // Responsive breakpoints
+          breakpoints: {
+            // When window width is <= 576px (extra small devices)
+            576: {
+              slidesPerView: 3,
+            },
+            // When window width is <= 768px (small devices)
+            768: {
+              slidesPerView: 3,
+            },
+            // When window width is <= 992px (medium devices)
+            992: {
+              slidesPerView: 4,
+            },
+            // When window width is <= 1200px (large devices)
+            1200: {
+              slidesPerView: 6,
+            },
+            // When window width is > 1200px (extra large devices)
+            1920: {
+              slidesPerView: 6,
+            },
+          },
+          autoplay: {
+            delay: 1000,
+          },
+          // navigation: {
+          //   nextEl: '.swiper-button-next',
+          //   prevEl: '.swiper-button-prev',
+          // },
+        });
+      });
+    </script>
   </body>
 </html>
